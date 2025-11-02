@@ -8,7 +8,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "proprietaires")
+@DiscriminatorValue("PROPRIETAIRE")
 public class Proprietaire extends User{
 
     private Boolean verified = false;

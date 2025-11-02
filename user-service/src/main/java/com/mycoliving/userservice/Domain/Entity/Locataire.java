@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "locataires")
+@DiscriminatorValue("LOCATAIRE")
 public class Locataire extends User{
 
-    private Double Budget ;
-    private String Villepreferee ;
+    private Double budget;  // ✅ Changé de "Budget" à "budget"
+    private String villepreferee;  // ✅ Changé de "Villepreferee" à "villepreferee"
 
     @OneToMany(mappedBy = "locataire", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
@@ -29,8 +29,8 @@ public class Locataire extends User{
 
     public Locataire(Long id, String email, String password, String nom, String prenom, String telephone, Integer age, String ville, Instant createdAt, Instant updatedAt, Set<Role> roles, Double budget, String villepreferee, List<Review> reviews, Profile profile, Preference preference) {
         super(id, email, password, nom, prenom, telephone, age, ville, createdAt, updatedAt, roles);
-        this.Budget = budget;
-        this.Villepreferee = villepreferee;
+        this.budget = budget;  // ✅ Changé
+        this.villepreferee = villepreferee;  // ✅ Changé
         this.reviews = reviews;
         this.profile = profile;
         this.preference = preference;
@@ -38,10 +38,10 @@ public class Locataire extends User{
 
     // Getters
     public Double getBudget() {
-        return Budget;
+        return budget;  // ✅ Changé
     }
     public String getVillepreferee() {
-        return Villepreferee;
+        return villepreferee;  // ✅ Changé
     }
     public List<Review> getReviews() {
         return reviews;
@@ -56,10 +56,10 @@ public class Locataire extends User{
 
     // Setters
     public void setBudget(Double budget) {
-        Budget = budget;
+        this.budget = budget;  // ✅ Changé
     }
     public void setVillepreferee(String villepreferee) {
-        Villepreferee = villepreferee;
+        this.villepreferee = villepreferee;  // ✅ Changé
     }
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
